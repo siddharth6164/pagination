@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import "./App.css";
+
+
+// ---------------------- ProductCard ----------------------
+const ProductCard = ({image,title})=>{
+  return <div className="product-card">
+    <img src={image} alt={title} className="product-image"/>
+    <span>{title}</span>
+  </div>
+}
+// ---------------------------------------------------------
+
+
+
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+  const [products, setProducts] = useState([]);
+  const fetchData = async () => {
+    const data = await fetch("https://dummyjson.com/products?limit=500");
+    const json = await data.json();
+    setProducts(json.products);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+  return !products.length ? (
+    <h1>No Products Found</h1>
+  ) : (
+      <div className="App">
+        <h1>Pagination</h1>
+        {products.map(items=><ProductCard key={items.id} image={items.thumbnail} title={items.title}/>)}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  );
 }
 
-export default App
+export default App;
