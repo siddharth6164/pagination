@@ -4,13 +4,33 @@
 
 .product-card{
   display: flex;
-  width: 210px;
+  width: 160px;
   flex-wrap: wrap;
   border: 1px solid black;
   padding: 5px;
 }
 
 .product-image{
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
+}
+
+.products-conatiner{
+  display: flex;
+  flex-wrap: wrap ;
+}
+
+.page-number{
+  cursor: pointer;
+  padding: 5px;
+  margin: 2px;
+  border: 1px solid black;
+}
+
+.pageination-container{
+  padding: 20px;
+}
+
+.active{
+  background-color:aqua;
 }
