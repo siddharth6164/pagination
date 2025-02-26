@@ -25,5 +25,9 @@
 
 3. **Data Handling:**
    - Slice the array of items to show only the relevant 10 items for the current page.
+---
+### Screenshot ###
 
 ![Screenshot of my project](https://github.com/siddharth6164/pagination/blob/main/public/Pagination.jpeg)
+
+---
